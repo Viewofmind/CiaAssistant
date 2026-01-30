@@ -71,3 +71,14 @@ USER.md
 
 # local tooling
 .serena/
+
+# Cia Assistant - Sensitive Files
+YOUR-API-KEYS.md
+**/config.json
+**/.clawdbot/
+*.key
+*.pem
+id_rsa
+id_ed25519
+credentials/
+secrets/

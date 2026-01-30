@@ -1,0 +1,76 @@
+{
+  "$schema": "https://docs.molt.bot/schema.json",
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "custom/gpt-4",
+        "fallbacks": ["ollama/llama3.3", "ollama/deepseek-r1:32b", "ollama/qwen2.5-coder:32b"]
+      },
+      "models": {
+        "custom/gpt-4": { "alias": "Primary AI" },
+        "ollama/llama3.3": { "alias": "Llama" },
+        "ollama/deepseek-r1:32b": { "alias": "DeepSeek R1" },
+        "ollama/qwen2.5-coder:32b": { "alias": "Qwen Coder" }
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "custom": {
+        "baseUrl": "https://api.your-provider.com/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "gpt-4",
+            "name": "GPT-4 (or your model name)",
+            "reasoning": false,
+            "input": ["text", "image"],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "ollama": {
+        "baseUrl": "http://127.0.0.1:11434/v1",
+        "apiKey": "61f0d384fd444ed6a49dd6054979be29.-r4AZG_weAokLkhzk-GkK8Ms",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "llama3.3",
+            "name": "Llama 3.3",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "deepseek-r1:32b",
+            "name": "DeepSeek R1 32B",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "qwen2.5-coder:32b",
+            "name": "Qwen 2.5 Coder 32B",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  }
+}

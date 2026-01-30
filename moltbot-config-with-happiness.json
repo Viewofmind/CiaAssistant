@@ -1,0 +1,73 @@
+{
+  "agents": {
+    "defaults": {
+      "name": "Cia",
+      "model": {
+        "primary": "custom/your-model-name",
+        "fallbacks": ["ollama/llama3.3", "ollama/deepseek-r1:32b"]
+      },
+      "models": {
+        "custom/your-model-name": { "alias": "Primary AI" },
+        "ollama/llama3.3": { "alias": "Llama" },
+        "ollama/deepseek-r1:32b": { "alias": "DeepSeek" },
+        "ollama/tomasmcm/zephyr-1b-olmo-sft-qlora": { "alias": "Happy Mode" }
+      },
+      "instructions": "You are Cia, a helpful AI assistant. When the user says 'Make me happy', you should switch to using the ollama/tomasmcm/zephyr-1b-olmo-sft-qlora model for a more cheerful and uplifting conversation. You can switch back to the primary model when they say 'back to normal' or similar phrases."
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "custom": {
+        "baseUrl": "https://your-provider-url.com/v1",
+        "apiKey": "1bc41bc8772346feaa2e8bfb7f723667.X33IblFyZkxSqpMyYLXZWurs",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "your-model-name",
+            "name": "Your Primary Model",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "ollama": {
+        "baseUrl": "http://127.0.0.1:11434/v1",
+        "apiKey": "61f0d384fd444ed6a49dd6054979be29.-r4AZG_weAokLkhzk-GkK8Ms",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "llama3.3",
+            "name": "Llama 3.3",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "deepseek-r1:32b",
+            "name": "DeepSeek R1 32B",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "tomasmcm/zephyr-1b-olmo-sft-qlora",
+            "name": "Zephyr Happy Mode",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 8192,
+            "maxTokens": 2048
+          }
+        ]
+      }
+    }
+  }
+}

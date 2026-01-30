@@ -1,0 +1,26 @@
+{
+  "folders": [
+    {
+      "name": "Moltbot VM",
+      "uri": "vscode-remote://ssh-remote+moltbot-vm/home/azureuser/moltbot"
+    },
+    {
+      "name": "Moltbot Local",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "files.watcherExclude": {
+      "**/node_modules/**": true,
+      "**/dist/**": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode-remote.remote-ssh",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
+  }
+}

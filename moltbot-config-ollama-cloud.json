@@ -1,0 +1,73 @@
+{
+  "agents": {
+    "defaults": {
+      "name": "Cia",
+      "model": {
+        "primary": "custom/your-model-name",
+        "fallbacks": ["ollama-cloud/llama3.3", "ollama-cloud/deepseek-r1:32b"]
+      },
+      "models": {
+        "custom/your-model-name": { "alias": "Primary AI" },
+        "ollama-cloud/llama3.3": { "alias": "Llama Backup" },
+        "ollama-cloud/deepseek-r1:32b": { "alias": "DeepSeek Backup" },
+        "ollama-cloud/tomasmcm/zephyr-1b-olmo-sft-qlora": { "alias": "Happy Mode" }
+      },
+      "instructions": "You are Cia, a helpful AI assistant. When the user says 'Make me happy', switch to using the ollama-cloud/tomasmcm/zephyr-1b-olmo-sft-qlora model for cheerful conversations. When they say 'back to normal', switch back to the primary model."
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "custom": {
+        "baseUrl": "https://your-provider-url.com/v1",
+        "apiKey": "1bc41bc8772346feaa2e8bfb7f723667.X33IblFyZkxSqpMyYLXZWurs",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "your-model-name",
+            "name": "Your Primary Model",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "ollama-cloud": {
+        "baseUrl": "https://api.ollama.com/v1",
+        "apiKey": "61f0d384fd444ed6a49dd6054979be29.-r4AZG_weAokLkhzk-GkK8Ms",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "llama3.3",
+            "name": "Llama 3.3 (Cloud)",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "deepseek-r1:32b",
+            "name": "DeepSeek R1 32B (Cloud)",
+            "reasoning": true,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          },
+          {
+            "id": "tomasmcm/zephyr-1b-olmo-sft-qlora",
+            "name": "Zephyr Happy Mode (Cloud)",
+            "reasoning": false,
+            "input": ["text"],
+            "cost": { "input": 0, "output": 0, "cacheRead": 0, "cacheWrite": 0 },
+            "contextWindow": 8192,
+            "maxTokens": 2048
+          }
+        ]
+      }
+    }
+  }
+}
