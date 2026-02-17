@@ -119,7 +119,7 @@ if command -v moltbot &> /dev/null; then
     echo "🎉 How to use Happiness Mode:"
     echo ""
     echo "Option 1: Say to Cia:"
-    echo '  "Make me happy"'
+    echo '  "Make me happy" or "Make me smile"'
     echo '  → Cia will switch to the cheerful Zephyr model'
     echo ""
     echo "Option 2: Use the helper script:"

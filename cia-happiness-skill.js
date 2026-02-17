@@ -20,7 +20,9 @@ const HAPPY_TRIGGERS = [
   'switch to happy mode',
   'use happiness mode',
   'happiness mode on',
-  'make it cheerful'
+  'make it cheerful',
+  'make me smile',
+  'cia make me smile'
 ];
 
 const NORMAL_TRIGGERS = [
